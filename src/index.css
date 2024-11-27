@@ -1,13 +1,174 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Các biến màu sắc */
+:root {
+  --brown: #6f4f37; /* Màu nâu chính */
+  --brown-dark: #4b3621; /* Màu nâu đậm */
+  --brown-light: #d8cfc4; /* Màu nâu sáng */
+  --white: #ffffff; /* Màu trắng */
+  --text-color: #2c2c2c; /* Màu chữ chính */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Cấu trúc toàn trang */
+body {
+  background: linear-gradient(
+    to bottom,
+    var(--brown-light),
+    var(--white)
+  ); /* Nền trang gradient từ nâu sáng đến trắng */
+  font-family: "Arial", sans-serif;
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  transition: background 0.3s ease; /* Thêm hiệu ứng chuyển màu nền khi hover */
+}
+
+/* Thêm hiệu ứng hover cho các section */
+section {
+  padding: 30px;
+  margin: 20px 0;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hiệu ứng shadow và hover cho header */
+header {
+  background-color: var(--brown-dark);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Bóng đổ nhẹ dưới header */
+  padding: 20px 0;
+  transition: box-shadow 0.3s ease;
+}
+
+header:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Tăng bóng đổ khi hover */
+}
+
+/* Hiệu ứng cho footer */
+footer {
+  background-color: var(--brown);
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1); /* Bóng đổ nhẹ ở phía trên footer */
+  padding: 20px 0;
+}
+
+/* Card sản phẩm (product card) */
+.product-card {
+  background-color: var(--brown-light);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Bóng đổ nhẹ cho card */
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease; /* Thêm hiệu ứng chuyển động mượt mà */
+  margin-bottom: 20px;
+}
+
+/* Khi hover vào card, card sẽ "nổi lên" nhẹ */
+.product-card:hover {
+  transform: translateY(-10px); /* Đưa card lên một chút khi hover */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Thêm bóng đổ mạnh hơn khi hover */
+  background-color: var(--brown-dark); /* Thay đổi màu nền khi hover */
+}
+
+/* Hiệu ứng cho hình ảnh sản phẩm */
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease; /* Thêm hiệu ứng khi hover vào ảnh */
+}
+
+/* Phóng to hình ảnh khi hover */
+.product-card:hover img {
+  transform: scale(1.05); /* Phóng to ảnh nhẹ khi hover */
+}
+
+/* Thêm hiệu ứng cho nút */
+.product-card .btn-primary {
+  background-color: var(--brown-dark); /* Màu nền của nút */
+  border-color: var(--brown-dark);
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Thêm hiệu ứng chuyển màu và phóng to nút */
+}
+
+/* Hiệu ứng hover cho nút */
+.product-card .btn-primary:hover {
+  background-color: var(--brown); /* Màu nền khi hover */
+  border-color: var(--brown);
+  transform: scale(1.05); /* Phóng to nút nhẹ khi hover */
+}
+
+/* Hiệu ứng hover cho tên sản phẩm */
+.product-card:hover .product-name {
+  color: var(--white); /* Thay đổi màu chữ khi hover */
+}
+
+/* Hiệu ứng hover cho giá sản phẩm */
+.product-card:hover .product-price {
+  color: var(--white); /* Thay đổi màu giá khi hover */
+}
+
+/* Định dạng tên sản phẩm */
+.product-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--brown-dark);
+  transition: color 0.3s ease;
+}
+
+/* Định dạng giá sản phẩm */
+.product-price {
+  font-size: 1rem;
+  color: var(--brown);
+  transition: color 0.3s ease;
+}
+
+/* Thêm hover cho nút "Xem chi tiết" */
+.product-card .btn-primary {
+  background-color: var(--brown-dark);
+  border-color: var(--brown-dark);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect for buttons */
+.product-card .btn-primary:hover {
+  background-color: var(--brown);
+  border-color: var(--brown);
+  transform: scale(1.05); /* Tăng kích thước nhẹ của nút */
+}
+
+/* Định dạng cho các phần tử tiêu đề (h1, h2, h3...) */
+h1,
+h2,
+h3,
+h4 {
+  color: var(--brown-dark);
+}
+
+/* Định dạng các đoạn văn bản */
+p {
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+/* Chỉnh sửa kiểu chữ cho nút */
+.btn-primary {
+  background-color: var(--brown);
+  border: none;
+  color: var(--white);
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Nút khi hover */
+.btn-primary:hover {
+  background-color: var(--brown-dark);
+}
+
+/* Định dạng các link */
+a {
+  text-decoration: none;
+  color: var(--brown-dark);
+}
+
+/* Hiệu ứng khi hover vào link */
+a:hover {
+  color: var(--brown);
 }
