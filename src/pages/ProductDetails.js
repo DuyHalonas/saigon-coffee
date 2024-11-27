@@ -33,15 +33,27 @@ const ProductDetails = ({ cartPosition }) => {
     const flyImage = document.createElement("img");
     flyImage.src = product.image; // Đảm bảo bạn có thuộc tính `image`.
     flyImage.className = "flying-image";
-    flyImage.style.setProperty("--product-x", `${productImage.left}px`);
-    flyImage.style.setProperty("--product-y", `${productImage.top}px`);
-    flyImage.style.setProperty("--cart-x", `${cartPosition.x}px`);
-    flyImage.style.setProperty("--cart-y", `${cartPosition.y}px`);
+
+    // Đặt vị trí ban đầu
+    flyImage.style.left = `${productImage.left}px`;
+    flyImage.style.top = `${productImage.top}px`;
+    flyImage.style.width = "100px";
+    flyImage.style.height = "auto";
+
     document.body.appendChild(flyImage);
 
+    // Sau một khoảng thời gian ngắn, đặt vị trí đích
+    setTimeout(() => {
+      flyImage.style.left = `${cartPosition.x}px`;
+      flyImage.style.top = `${cartPosition.y}px`;
+      flyImage.style.transform = "scale(0.2)"; // Thu nhỏ hình ảnh
+      flyImage.style.opacity = "0"; // Làm mờ dần
+    }, 50);
+
+    // Xóa hình ảnh sau khi hiệu ứng kết thúc
     setTimeout(() => {
       document.body.removeChild(flyImage);
-    }, 800); // Thời gian animation
+    }, 800); // Thời gian khớp với animation trong CSS
   };
 
   const handleCloseModal = () => setShowModal(false);
